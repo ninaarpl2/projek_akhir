@@ -44,23 +44,19 @@
 <div class="col-lg-20 d-flex align-items-stretch">
     <div class="card w-100">
       <div class="card-body 8">
-        <div><a href="/tambahkaryawan" class="/btn btn-primary">Tambah karyawan</a></div>
-        <h5 class="card-title fw-semibold mb-4">Profile</h5>
-        <div class="table-responsive">
-
-            <div class="card">
-                  <ul>
-                    <li><strong>Nama: </strong>{{Auth::user()->nama}}  </li>
-                    <li><strong>Nis: </strong>{{Auth::user()->nis}}  </li>
-                    <li><strong>Email: </strong>{{Auth::user()->email}}  </li>
-                    <li><strong>role: </strong>{{Auth::user()->role}}  </li>
 
 
-
-                  </ul>
+          <div class="text-center">
+                <h5 class=""><strong>Profile</strong></h5>
+                  <table class="table">
+                    <span><strong>Nama: </strong>{{Auth::user()->nama}}  </span><br>
+                    <span><strong>Nis: </strong>{{Auth::user()->nis}}  </span><br>
+                    <span><strong>Email: </strong>{{Auth::user()->email}}  </span><br>
+                    <span><strong>Role: </strong>{{Auth::user()->role}}  </span><br>
+                  </table>
             </div>
 
-        </div>
+
       </div>
     </div>
   </div>

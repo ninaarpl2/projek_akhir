@@ -69,34 +69,6 @@
 
           <li class="nav-small-cap">
             <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-            <span class="hide-menu"></span>
-          </li>
-          <li class="sidebar-item">
-            <a class="sidebar-link" href="/tambahkaryawan" aria-expanded="false">
-              <span>
-                <i class=""></i>
-              </span>
-              <span class="hide-menu">
-              </span>
-            </a>
-          </li>
-          <li class="sidebar-item">
-            <a class="sidebar-link" href="/tambahkaryawan" aria-expanded="false">
-              <span>
-                <i class=""></i>
-              </span>
-              <span class="hide-menu">
-              </span>
-            </a>
-          </li>
-          <li class="sidebar-item">
-            <a class="sidebar-link" href="/editkaryawan" aria-expanded="false">
-              <span>
-       </span>
-             </a>
-          </li>
-          <li class="nav-small-cap">
-            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
             <span class="hide-menu">AUTH</span>
           </li>
           @if (Auth::user()->role == 'admin')

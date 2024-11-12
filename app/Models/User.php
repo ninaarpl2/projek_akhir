@@ -1,8 +1,6 @@
 <?php
-
 namespace App\Models;
 
-use App\Models\Absensi;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -13,11 +11,6 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
     protected $fillable = [
         'nama',
         'nis',
@@ -27,38 +20,31 @@ class User extends Authenticatable
         'alamat',
         'password',
         'role',
-
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
 
-    public function izin(){
-        return $this->hasMany(Izin::class,'user_id');
+    // Relationship for user as a requester
+    public function izins()
+    {
+        return $this->hasMany(Izin::class, 'user_id');
     }
 
-    public function izinpetugas(){
-        return $this->hasMany(Izin::class,'petugas_id');
+    // Relationship for user as a petugas/admin handling the request
+    public function handledIzins()
+    {
+        return $this->hasMany(Izin::class, 'petugas_id');
     }
 
-    public function absensi(){
-        return $this->hasMany(Absensi::class,'user_id');
+    public function absensi()
+    {
+        return $this->hasMany(Absensi::class, 'user_id');
     }
-
 }

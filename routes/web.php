@@ -39,18 +39,23 @@ Route::middleware(['auth'])->group(function() {
 
         Route::get('/editabsen/{id}',[AbsensiController::class,'edit']);
         Route::post('/updateabsensi/{id}',[AbsensiController::class,'update']);
+        Route::get('/destroy/absensi/{id}',[AbsensiController::class,'destroy']);
 
 
         // izin
         Route::get('/tambahizin', [IzinController::class, 'create']);
         Route::post('/store/tambahizin', [IzinController::class, 'storeIzin']);
-        Route::get('/destroy/absensi/{id}',[AbsensiController::class,'destroy']);
+        Route::get('/editizin/{id}',[IzinController::class,'edit']);
+        Route::post('/updateizin/{id}',[IzinController::class,'updateizin']);
 
 
-        Route::get('/keterangan',[IzinController::class,'createketerangan']);
+        Route::get('/keterangan/{id}', [IzinController::class, 'tambahketerangan']);
+        Route::post('/store/tambahketerangan/{id}', [IzinController::class, 'storeketerangan']);
+        Route::get('/detailizin/{id}',[IzinController::class,'detailizin']);
 
 
-        
+
+
         Route::get('/kategori',[KategoriController::class,'index']);
 
         Route::get('/tambahkategoriizin', [KategoriController::class, 'create']);
