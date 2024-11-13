@@ -82,6 +82,7 @@ Route::middleware(['auth'])->group(function() {
         Route::get('/karyawan/detail/{id}', [KaryawanController::class, 'detail']);
         Route::post('/karyawan/update/{id}', [KaryawanController::class, 'update']);
         Route::get('/destroy/{id}', [KaryawanController::class, 'destroy']);
+        Route::get('/destroyizin/{id}', [IzinController::class, 'destroy']);
 
 
 
