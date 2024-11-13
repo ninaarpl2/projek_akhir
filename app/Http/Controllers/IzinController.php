@@ -133,9 +133,10 @@ class IzinController extends Controller
 
 
     // Menghapus izin
-    public function destroy(Izin $izin)
+    public function destroy($id)
     {
+        $izin = Izin::findOrFail($id);
         $izin->delete();
-        return redirect()->route('izins.index')->with('success', 'Izin berhasil dihapus.');
+        return redirect('/izin')->with('success', 'Izin berhasil dihapus.');
     }
 }
