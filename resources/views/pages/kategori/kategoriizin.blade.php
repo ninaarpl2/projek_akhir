@@ -25,12 +25,8 @@
                     <td>{{ $kategori->nama_kategori }}</td>
                     <td>{{ $kategori->deskripsi }}</td>
                     <td>
-                        <a href="" class="btn btn-warning btn-sm">Edit</a>
-                        <form action="" method="POST" style="display:inline;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus?')">Hapus</button>
-                        </form>
+                        <a href="/updatekategori/{{$kategori->id}}" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="/">hapus</a>
                     </td>
                 </tr>
             @endforeach

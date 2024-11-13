@@ -37,25 +37,30 @@ class KategoriController extends Controller
 
 
     // Show the form for editing an existing category
-    public function edit($id)
-    {
-        $kategori = Kategori::findOrFail($id);
-        return view('', compact('kategori'));
-    }
+    // Show the form for editing an existing category
+        public function edit($id)
+        {
+            $kategori = Kategori::findOrFail($id);
+            return view('pages.kategori.editkategori', compact('kategori'));
+        }
 
-    // Update the category in the database
-    public function update(Request $request, $id)
-    {
-        $request->validate([
-            'nama_kategori' => 'required|string|max:255',
-            'deskripsi' => 'required|string',
-        ]);
+        // Update the category in the database
+        public function update(Request $request, $id)
+        {
+            $request->validate([
+                'nama_kategori' => 'required|string|max:255',
+                'deskripsi' => 'nullable|string|max:255',
+            ]);
 
-        $kategori = Kategori::findOrFail($id);
-        $kategori->update($request->all());
+            $kategori = Kategori::findOrFail($id);
+            $kategori->update([
+                'nama_kategori' => $request->input('nama_kategori'),
+                'deskripsi' => $request->input('deskripsi'),
+            ]);
 
-        return redirect()->route('')->with('success', 'Kategori berhasil diperbarui.');
-    }
+            return redirect()->route('kategori.index')->with('success', 'Kategori berhasil diperbarui.');
+        }
+
 
     // Delete a category from the database
     public function destroy($id)
