@@ -60,8 +60,9 @@
       </div>
     </div>
   </div>
-  <div>
-    <table class="table">
+  <div class="card w-100">
+        <div class="col-12 lg-12">
+        <table class="table table-boerded">
         <thead>
             <tr>
                 <th>no</th>
@@ -69,7 +70,6 @@
                 <th>foto absen</th>
                 <th>tanggal absensi</th>
                 <th>jam masuk</th>
-                <th>opsi</th>
             </tr>
         </thead>
         <tbody>
@@ -80,14 +80,12 @@
                     <td>{{ $user->email}}</td>
                     <td>{{ $user->nis }}</td>
                     <td>{{ $user->role }}</td>
-                    <td>
-                       <a href="/editkaryawan" class="btn btn-info">edit</a>
-                       <a href="" class="btn btn-danger">hapus</a>
-                    </td>
+
                 </tr>
             @endforeach
         </tbody>
     </table>
+        </div>
   </div>
 
 
