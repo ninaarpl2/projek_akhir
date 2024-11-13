@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\IzinController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AbsensiController;
+use App\Http\Controllers\DasboardController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\KategoriController;
 
@@ -19,9 +20,7 @@ Route::middleware(['guest'])->group(function() {
 
 Route::middleware(['auth'])->group(function() {
     Route::middleware(['role:admin,user'])->group(function() {
-        Route::get('/', function() {
-            return view('pages.dasboard.index');
-        });
+        Route::get('/dasboard', [DasboardController::class, 'index']);
         Route::get('/karyawan', [UserController::class, 'index']);
         Route::get('/izin', [IzinController::class, 'index']);
 

@@ -17,7 +17,7 @@
             <span class="hide-menu">Home</span>
           </li>
           <li class="sidebar-item">
-            <a class="sidebar-link" href="/" aria-expanded="false">
+            <a class="sidebar-link" href="/dasboard" aria-expanded="false">
               <span>
                 <i class="ti ti-layout-dashboard"></i>
               </span>
@@ -57,6 +57,7 @@
               <span class="hide-menu">Absensi</span>
             </a>
           </li>
+          @if (Auth::user()->role == 'admin')
            <li class="sidebar-item">
             <a class="sidebar-link" href="/kategori" aria-expanded="false">
               <span>
@@ -65,6 +66,7 @@
               <span class="hide-menu">kategori izin</span>
             </a>
           </li>
+          @endif
 
 
           <li class="nav-small-cap">

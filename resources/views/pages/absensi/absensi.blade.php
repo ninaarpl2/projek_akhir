@@ -32,8 +32,16 @@
 
 
                             <td>
-                                <a href="/jamkeluar/{{$absen->id}}" class="btn btn-info">keluar sekarang</a>
-                                <a href="/jamlembur/{{$absen->id}}" class="btn btn-info text-white">jam lembur</a>
+                            @if (Auth::user()->role == 'user')
+                                @if (!$absen->jam_keluar) <!-- Memeriksa apakah `jam_keluar` belum diinput -->
+                                    <a href="/jamkeluar/{{$absen->id}}" class="btn btn-info">keluar sekarang</a>
+                                @endif
+
+                                @if (!$absen->jam_lembur) <!-- Memeriksa apakah `jam_lembur` belum diinput -->
+                                    <a href="/jamlembur/{{$absen->id}}" class="btn btn-info text-white">jam lembur</a>
+                                @endif
+                            @endif
+
                             @if (Auth::user()->role == 'admin')
                                <a href="/editabsen/{{$absen->id}}" class="btn btn-success">edit</a>
                                <a href="/destroy/absensi/{{$absen->id}}" class="btn btn-danger">hapus</a>
