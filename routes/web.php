@@ -48,6 +48,11 @@ Route::middleware(['auth'])->group(function() {
         Route::get('/editizin/{id}',[IzinController::class,'edit']);
         Route::post('/updateizin/{id}',[IzinController::class,'updateizin']);
 
+         //KATEGORI
+         Route::get('/editkategori/{id}',[IzinController::class,'edit']);
+         Route::post('/updatekategorizin/{id}',[IzinController::class,'updatekategoriizin']);
+
+
 
         Route::get('/keterangan/{id}', [IzinController::class, 'tambahketerangan']);
         Route::post('/store/tambahketerangan/{id}', [IzinController::class, 'storeketerangan']);
@@ -60,6 +65,8 @@ Route::middleware(['auth'])->group(function() {
 
         Route::get('/tambahkategoriizin', [KategoriController::class, 'create']);
         Route::post('/store/kategori', [KategoriController::class, 'store']);
+
+        Route::get('/destroyKategori/{id}', [KategoriController::class, 'destroyKategori']);
 
 
         Route::get('/profile', [AuthController::class, 'profile']);

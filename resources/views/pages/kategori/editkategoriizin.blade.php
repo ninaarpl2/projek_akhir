@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <h2>Daftar Kategori</h2>
-    <a href="/tambahkategoriizin" class="btn btn-primary mb-3">Tambah Kategori</a>
+    <a href="/editkategoriizin" class="btn btn-primary mb-3">Edit Kategori</a>
 
     @if(session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
@@ -25,7 +25,7 @@
                     <td>{{ $kategori->nama_kategori }}</td>
                     <td>{{ $kategori->deskripsi }}</td>
                     <td>
-                        <a href="/editkategoriizin" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="" class="btn btn-warning btn-sm">Edit</a>
                         <form action="" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')

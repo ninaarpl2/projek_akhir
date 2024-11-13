@@ -58,11 +58,11 @@ class KategoriController extends Controller
     }
 
     // Delete a category from the database
-    public function destroy($id)
+    public function destroyKategori($id)
     {
         $kategori = Kategori::findOrFail($id);
         $kategori->delete();
 
-        return redirect()->route('')->with('success', 'Kategori berhasil dihapus.');
+        return redirect('/kategori');
     }
 }

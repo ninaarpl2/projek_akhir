@@ -36,7 +36,7 @@
                             <td>{{ $izin->status }}</td>
                             @if (Auth::user()->role == 'admin')
                             <td>
-                                <a href="/keterangan/{{$izin->id}}" class="btn btn-info">cek</a>
+                                <a href="/keterangan/{{$izin->id}}" class="btn btn-info">status</a>
                                 <a href="/izin/edit/{{$izin->id}}" class="btn btn-warning">Edit</a>
                                 <a href="" class="btn btn-danger">hapus</a>
                             </td>
