@@ -60,7 +60,7 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect('/')->with('success', 'Login successful.');
+            return redirect('/dasboard')->with('success', 'Login successful.');
         } else {
             return back()->withErrors(['email' => 'Email or password is incorrect.'])
                          ->onlyInput('email');

@@ -4,7 +4,9 @@
 <div class="col-lg-12 d-flex align-items-stretch">
     <div class="card w-100">
       <div class="card-body p-4">
+      @if (Auth::user()->role == 'user')
             <div><a href="/tambahabsensi" class="btn btn-primary">Tambah jam masuk</a></div>
+            @endif
         <h5 class="card-title fw-semibold mb-4">Data Absen</h5>
         <div class="table-responsive">
             <table class="table">
