@@ -72,7 +72,7 @@ Route::middleware(['auth'])->group(function() {
         Route::get('/logout', [AuthController::class, 'logout']);
 
 
-        Route::get('/editkategori/{id}', [KategoriController::class, 'edit']);
+        Route::get('/editkategoriizin/{id}', [KategoriController::class, 'edit']);
         Route::post('/updatekategori/{id}', [KategoriController::class, 'update']);
 
         Route::get('/detail',function(){

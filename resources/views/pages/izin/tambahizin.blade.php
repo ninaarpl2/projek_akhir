@@ -14,6 +14,9 @@
                     <option value="{{ $kategori->id }}">{{ $kategori->nama_kategori }}</option>
                 @endforeach
             </select>
+            @error('kategoriizin_id')
+                 <p class="text-danger">{{$message}}</p>
+            @enderror
         </div>
 
 
@@ -21,16 +24,25 @@
         <div class="form-group">
             <label for="tanggal_izin">Tanggal Izin</label>
             <input type="date" name="tanggal_izin" id="tanggal_izin" class="form-control" required>
+            @error('tanggal_izin')
+                 <p class="text-danger">{{$message}}</p>
+            @enderror
         </div>
 
         <div class="form-group">
             <label for="tanggal_masuk">Tanggal Masuk</label>
             <input type="date" name="tanggal_masuk" id="tanggal_masuk" class="form-control" required>
+            @error('tanggal masuk')
+                 <p class="text-danger">{{$message}}</p>
+            @enderror
         </div>
 
         <div class="form-group">
             <label for="alasan_izin">Alasan Izin</label>
             <textarea name="alasan_izin" id="alasan_izin" class="form-control" required></textarea>
+            @error('alasan_izin')
+                 <p class="text-danger">{{$message}}</p>
+            @enderror
         </div>
 
 

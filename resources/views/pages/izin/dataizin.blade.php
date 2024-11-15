@@ -1,5 +1,8 @@
 @extends('layouts.app')
 @section('content')
+@if(session('success'))
+        <div class="alert alert-success">{{ session('success') }}</div>
+    @endif
 
 <div class="col-lg-12 d-flex align-items-stretch">
     <div class="card w-200">
@@ -30,7 +33,7 @@
                     @foreach ($izins as $key => $izin)
                         <tr>
                             <td>{{ $key + 1 }}</td>
-                            <td>{{$izin->user ? $transaksi->user->nama : 'nama tidak ada' }}</td> <!-- Displays the name of the user who made the request -->
+                            <td>{{$izin->user ? $izin->user->nama : 'nama tidak ada'}}</td> <!-- Displays the name of the user who made the request -->
                             <td>{{ $izin->petugas ? $izin->petugas->nama : 'Tidak Ada' }}</td> <!-- Displays the name of the petugas -->
                             <td><a href="/detailizin/{{$izin->id}}" class="text-dark " style="text-decoration: none">{{ $izin->kategori->nama_kategori }}</a></td> <!-- Displays the category name -->
                             <td>{{ $izin->tanggal_izin }}</td>

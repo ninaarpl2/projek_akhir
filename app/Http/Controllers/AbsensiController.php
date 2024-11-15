@@ -113,7 +113,7 @@ class AbsensiController extends Controller
             'jam_lembur' => $request->jam_lembur,
         ]);
 
-        return redirect('/absensi')->with('success', 'Absensi berhasil diperbarui.');
+        return redirect('/absensi')->with('success', 'Absensi berhasil diedit.');
     }
 
     // Delete absensi data

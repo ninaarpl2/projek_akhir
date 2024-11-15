@@ -58,7 +58,7 @@ class KategoriController extends Controller
                 'deskripsi' => $request->input('deskripsi'),
             ]);
 
-            return redirect()->route('kategori.index')->with('success', 'Kategori berhasil diperbarui.');
+            return redirect('/kategori')->with('success', 'Kategori berhasil diperbarui.');
         }
 
 

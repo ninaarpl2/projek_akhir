@@ -1,6 +1,11 @@
  @extends('layouts.app')
 @section('content')
 
+
+@if(session('success'))
+        <div class="alert alert-success">{{ session('success') }}</div>
+    @endif
+
 <div class="col-lg-12 d-flex align-items-stretch">
     <div class="card w-100">
       <div class="card-body p-4">
@@ -26,7 +31,7 @@
                     @foreach ($absensis as $key => $absen)
                         <tr>
                             <td>{{ $key + 1 }}</td>
-                            <td>{{ $absen->user->nama }}</td>
+                            <td>{{ $absen->user ? $absen->user->nama : 'nama tidak ada'}}</td>
                             <td>{{ $absen->tanggal_absensi }}</td>
                             <td>{{ $absen->jam_masuk }}</td>
                             <td>{{ $absen->jam_keluar}}</td>

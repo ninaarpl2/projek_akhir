@@ -103,7 +103,7 @@ class IzinController extends Controller
         $petugas = User::where('role', 'admin')->get(); // Mengambil data petugas dengan peran admin
         $izins = Izin::findOrFail($id);
 
-        return view('pages.izin.editizin', compact('izin', 'users', 'petugas','izins'));
+        return view('pages.izin.editizin', compact('izin', 'users', 'petugas','izins'))->with('success', 'Izin berhasil diperbarui.');
     }
 
     // Menyimpan perubahan izin

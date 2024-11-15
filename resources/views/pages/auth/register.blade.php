@@ -27,14 +27,23 @@
                   <div class="mb-3">
                     <label for="nama" class="form-label">Nama</label>
                     <input type="text" name="nama" class="form-control" id="nama">
+                    @error('nama')
+                    <p class="text-danger">{{$message}}</p>
+                    @enderror
                   </div>
                   <div class="mb-3">
                     <label for="nis" class="form-label">NIS</label>
                     <input type="text" name="nis" class="form-control" id="nis">
+                    @error('nis')
+                    <p class="text-danger">{{$message}}</p>
+                    @enderror
                   </div>
                   <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
                     <input type="email" name="email" class="form-control" id="email">
+                    @error('email')
+                    <p class="text-danger">{{$message}}</p>
+                    @enderror
                   </div>
                   <div class="mb-3">
                     <label for="gender" class="form-label">Jenis Kelamin</label>
@@ -42,14 +51,21 @@
                         <option value="pria">Laki-laki</option>
                         <option value="wanita">Perempuan</option>
                     </select>
+
                 </div>
                 <div class="mb-3">
                     <label for="alamat" class="form-label">Alamat</label>
                     <input type="alamat" name="alamat" class="form-control" id="alamat">
+                    @error('alamat')
+                    <p class="text-danger">{{$message}}</p>
+                    @enderror
                   </div>
                   <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
                     <input type="password" name="password" class="form-control" id="password">
+                    @error('password')
+                    <p class="text-danger">{{$message}}</p>
+                    @enderror
                   </div>
                   <div class="mb-3">
                     <label><strong>Role</strong></label>

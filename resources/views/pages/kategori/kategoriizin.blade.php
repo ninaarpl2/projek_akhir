@@ -25,7 +25,7 @@
                     <td>{{ $kategori->nama_kategori }}</td>
                     <td>{{ $kategori->deskripsi }}</td>
                     <td>
-                        <a href="/editkategoriizin" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="/editkategoriizin/{{$kategori->id}}" class="btn btn-warning btn-sm">Edit</a>
                         <form action="" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')

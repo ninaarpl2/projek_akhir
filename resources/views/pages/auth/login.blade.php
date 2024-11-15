@@ -29,7 +29,6 @@
                     <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                     @error('email')
                     <p class="text-danger">{{$message}}</p>
-
                     @enderror
                 </div>
                   <div class="mb-4">
