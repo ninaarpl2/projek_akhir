@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Absensi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class AbsensiController extends Controller
 {
@@ -22,21 +23,25 @@ class AbsensiController extends Controller
     }
 
     public function storejammasuk(Request $request)
-    {
-        $request->validate([
-            'user_id' => 'required|exists:users,id',
-            'tanggal_absensi' => 'required|date',
-            'jam_masuk' => 'required|date_format:H:i',
-        ]);
+{
+    $request->validate([
+        'user_id' => 'required|exists:users,id',
+        'tanggal_absensi' => 'required|date',
+    ]);
 
-        Absensi::create([
-            'user_id' => $request->user_id,
-            'tanggal_absensi' => $request->tanggal_absensi,
-            'jam_masuk' => $request->jam_masuk,
-        ]);
+    // Menambahkan waktu saat ini ke jam_masuk (sekarang)
+    $jamMasuk = Carbon::now()->format('H:i'); // format jam hanya 'H:i'
 
-        return redirect('/absensi')->with('success', 'Absensi berhasil disimpan.');
-    }
+    // Menyimpan data absensi
+    Absensi::create([
+        'user_id' => $request->user_id,
+        'tanggal_absensi' => $request->tanggal_absensi,
+        'jam_masuk' => $request->jam_masuk,
+    ]);
+
+    return redirect('/absensi')->with('success', 'Absensi berhasil disimpan.');
+}
+
 
     public function jamkeluar($id)
     {
@@ -44,20 +49,28 @@ class AbsensiController extends Controller
         return view('pages.absensi.tambahjamkeluar', compact('absensi'));
     }
 
+     // Pastikan Carbon sudah di-import di atas controller
+
     public function storejamkeluar(Request $request)
     {
+        // Validasi data yang dikirimkan
         $request->validate([
             'user_id' => 'required|exists:users,id',
             'tanggal_absensi' => 'required|date',
-            'jam_keluar' => 'required|date_format:H:i',
         ]);
 
+        // Menetapkan waktu sekarang sebagai jam_keluar saat aksi submit dilakukan
+        $jamKeluar = Carbon::now()->format('H:i');  // Mengambil waktu saat ini dalam format HH:MM (jam:menit)
+
+        // Melakukan update dengan jam_keluar yang otomatis berdasarkan waktu saat ini
         Absensi::where('user_id', $request->user_id)
             ->where('tanggal_absensi', $request->tanggal_absensi)
-            ->update(['jam_keluar' => $request->jam_keluar]);
+            ->update(['jam_keluar' => $jamKeluar]);
 
+        // Redirect ke halaman absensi dengan pesan sukses
         return redirect('/absensi')->with('success', 'Jam Keluar berhasil disimpan.');
     }
+
 
     public function jamlembur($id)
     {
@@ -66,19 +79,23 @@ class AbsensiController extends Controller
     }
 
     public function storejamlembur(Request $request)
-    {
-        $request->validate([
-            'user_id' => 'required|exists:users,id',
-            'tanggal_absensi' => 'required|date',
-            'jam_lembur' => 'required|date_format:H:i',
-        ]);
+{
+    $request->validate([
+        'user_id' => 'required|exists:users,id',
+        'tanggal_absensi' => 'required|date',
+        // 'jam_lembur' dihilangkan dari validasi karena akan diatur otomatis
+    ]);
 
-        Absensi::where('user_id', $request->user_id)
-            ->where('tanggal_absensi', $request->tanggal_absensi)
-            ->update(['jam_lembur' => $request->jam_lembur]);
+    // Menetapkan waktu sekarang sebagai jam_lembur
+    $jamLembur = Carbon::now()->format('H:i');  // Mengambil waktu saat ini dalam format HH:MM
 
-        return redirect('/absensi')->with('success', 'Jam Lembur berhasil disimpan.');
-    }
+    // Melakukan update dengan jam_lembur yang otomatis
+    Absensi::where('user_id', $request->user_id)
+        ->where('tanggal_absensi', $request->tanggal_absensi)
+        ->update(['jam_lembur' => $jamLembur]);
+
+    return redirect('/absensi')->with('success', 'Jam Lembur berhasil disimpan.');
+}
 
 
 

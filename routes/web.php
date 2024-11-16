@@ -18,9 +18,11 @@ Route::middleware(['guest'])->group(function() {
 });
 
 
+
+
 Route::middleware(['auth'])->group(function() {
     Route::middleware(['role:admin,user'])->group(function() {
-        Route::get('/dasboard', [DasboardController::class, 'index']);
+        Route::get('/', [DasboardController::class, 'index']);
         Route::get('/karyawan', [UserController::class, 'index']);
         Route::get('/izin', [IzinController::class, 'index']);
 

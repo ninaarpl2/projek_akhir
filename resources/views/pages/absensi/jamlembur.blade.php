@@ -25,11 +25,12 @@
 
         <div class="form-group">
             <label for="jam_lembur">Jam Lembur</label>
-            <input type="time" name="jam_lembur" class="form-control" value="{{ old('jam_lembur') }}" required>
+            <input type="time" name="jam_lembur" class="form-control" value="{{ old('jam_lembur', now()->format('H:i')) }}" required readonly>
             @error('jam_lembur')
                 <div class="text-danger">{{ $message }}</div>
             @enderror
         </div>
+
 
         <button type="submit" class="btn btn-primary">Simpan</button>
     </form>

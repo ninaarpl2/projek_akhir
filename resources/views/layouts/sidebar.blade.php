@@ -84,13 +84,24 @@
           </li>
           @endif
           <li class="sidebar-item">
-            <a class="sidebar-link" href="/logout" aria-expanded="false">
-              <span>
-                <i class="ti ti-login"></i>
-              </span>
-              <span class="hide-menu">Logout</span>
-            </a>
-          </li>
+  <a class="sidebar-link" href="/logout" aria-expanded="false" onclick="return confirmLogout(event)">
+    <span>
+      <i class="ti ti-login"></i>
+    </span>
+    <span class="hide-menu">Logout</span>
+  </a>
+</li>
+
+<script>
+  function confirmLogout(event) {
+    const confirmAction = confirm("Apakah Anda yakin ingin logout?");
+    if (!confirmAction) {
+      event.preventDefault(); // Membatalkan logout jika pengguna menekan 'Cancel'
+    }
+    return confirmAction; // Melanjutkan logout jika pengguna menekan 'OK'
+  }
+</script>
+
           {{-- <li class="sidebar-item">
             <a class="sidebar-link" href="./authentication-register.html" aria-expanded="false">
               <span>
